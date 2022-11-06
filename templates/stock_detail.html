@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detail of {{dataline.stock_name_in_database}}{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Detail of : {{dataline.stock_name_in_database}}</h3>
+        </center>
+    </div>
+    <div class="fluid m-3">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Stock Symbol</td>
+                            <td>{{dataline.stock_symbol_in_database}}</td>
+                        <tr>
+                        <tr>
+                            <td>Avarage Buy price</td>
+                            <td>{{dataline.stock_buy_price_in_database}}</td>
+                        <tr>
+                        <tr>
+                            <td>Stock Current Price</td>
+                            <td>{{dataline.stock_current_price_in_database}}</td>
+                        <tr>
+                        <tr>
+                            <td>Holding Amount</td>
+                            <td>{{dataline.stock_amount_in_database}}</td>
+                        <tr>
+                        <tr>
+                            <td>amount invested</td>
+                            <td>{{investment}}</td>
+                        <tr>
+                        <tr>
+                            <td>amount return</td>
+                            <td>{{return}}</td>
+                        <tr>
+                        <tr>
+                            <td>overall profit</td>
+                            <td>{{dataline.stock_profit_in_database}}</td>
+                        <tr>
+                    </tbody>
+                </table>
+                <div class="container">
+                    <center>
+                        <a href="{% url 'stock_delete' dataline.pk %}"><button type="button" class="btn btn-danger m-3">delete the record</button></a>
+                    </center>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <img src="{% static 'images/labels/label2.gif' %}" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

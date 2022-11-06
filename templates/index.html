@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+{% block style %}
+<!-- chart js cdn -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+{% endblock style %}
+{% block body %}
+<div class="container">
+    <center>
+        <h5 class="m-3">
+            WELCOME : BANAJIT RAJBONGSHI
+        </h5>
+    </center>
+    <div class="row m-3">
+        <div class="fluid bg-dark">
+            <center>
+                <h4 class="text-light m-1 p-2">Stocks Analysis</h4>
+            </center>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <center>
+                <h5>Growth of Stocks Investment</h5>
+            </center>
+            <center><canvas id="myChart1" width="500" height="200"></canvas></center>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <center>
+                <h5>Growth of Stocks Return</h5>
+            </center>
+            <center><canvas id="myChart2" width="500" height="200"></canvas></center>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <center>
+                <h5>Growth of Stocks Profit</h5>
+            </center>
+            <center><canvas id="myChart3" width="500" height="200"></canvas></center>
+        </div>
+    </div>
+    <!--/////////////////////////////////////////////////////////////////////////////-->
+    <div class="row m-3">
+        <div class="fluid bg-dark">
+            <center>
+                <h4 class="text-light m-1 p-2">Mutual Fund Analysis</h4>
+            </center>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <center>
+                <h5>Growth of mutual Fund Investment</h5>
+            </center>
+            <center><canvas id="myChart4" width="500" height="200"></canvas></center>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <center>
+                <h5>Growth of mutual Fund Return</h5>
+            </center>
+            <center><canvas id="myChart5" width="500" height="200"></canvas></center>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <center>
+                <h5>Growth of mutual Fund Profit</h5>
+            </center>
+            <center><canvas id="myChart6" width="500" height="200"></canvas></center>
+        </div>
+    </div>
+    <!--//////////////////////////////////////////////////////////////////////////////-->
+</div>
+<script>
+    const ctx1 = document.getElementById('myChart1').getContext('2d');
+    const myChart1 = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: [{% for i in time %} '{{ i }}', {% endfor %}],
+    datasets: [{
+        label: 'Total Stock Investment',
+        data: [{% for i in st_investment %} {{ i }}, {% endfor %}],
+        backgroundColor: [
+            'rgba(0, 0, 255, 1)',
+        ],
+            borderColor: [
+                'rgba(0, 0, 255, 1)',
+            ],
+                borderWidth: 0.5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
+    const myChart2 = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: [{% for i in time %} '{{ i }}', {% endfor %}],
+    datasets: [{
+        label: 'Growth of stock return',
+        data: [{% for i in st_return %} {{ i }}, {% endfor %}],
+        backgroundColor: [
+            'rgba(0, 0, 255, 1)',
+        ],
+            borderColor: [
+                'rgba(0, 0, 255, 1)',
+            ],
+                borderWidth: 0.5
+        }]
+    },
+    options: {
+        y: {
+            beginAtZero: true
+        }
+    }
+});
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    const ctx3 = document.getElementById('myChart3').getContext('2d');
+    const myChart3 = new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: [{% for i in time %} '{{ i }}', {% endfor %}],
+    datasets: [{
+        label: 'Total Stocks Profit',
+        data: [{% for i in st_profit %} {{ i }}, {% endfor %}],
+        backgroundColor: [
+            'rgba(0, 0, 255, 1)',
+        ],
+            borderColor: [
+                'rgba(0, 0, 255, 1)',
+            ],
+                borderWidth: 0.5
+        }]
+    },
+    options: {
+        y: {
+            beginAtZero: true
+        }
+    }
+});
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    const ctx4 = document.getElementById('myChart4').getContext('2d');
+    const myChart4 = new Chart(ctx4, {
+        type: 'line',
+        data: {
+            labels: [{% for i in time %} '{{ i }}', {% endfor %}],
+    datasets: [{
+        label: 'Mutual Fund Investment',
+        data: [{% for i in mf_investment %} {{ i }}, {% endfor %}],
+        backgroundColor: [
+            'rgba(0, 0, 255, 1)',
+        ],
+            borderColor: [
+                'rgba(0, 0, 255, 1)',
+            ],
+                borderWidth: 0.5
+        }]
+    },
+    options: {
+        y: {
+            beginAtZero: true
+        }
+    }
+});
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    const ctx5 = document.getElementById('myChart5').getContext('2d');
+    const myChart5 = new Chart(ctx5, {
+        type: 'line',
+        data: {
+            labels: [{% for i in time %} '{{ i }}', {% endfor %}],
+    datasets: [{
+        label: 'Mutual Fund Return',
+        data: [{% for i in mf_return %} {{ i }}, {% endfor %}],
+        backgroundColor: [
+            'rgba(0, 0, 255, 1)',
+        ],
+            borderColor: [
+                'rgba(0, 0, 255, 1)',
+            ],
+                borderWidth: 0.5
+        }]
+    },
+    options: {
+        y: {
+            beginAtZero: true
+        }
+    }
+});
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    const ctx6 = document.getElementById('myChart6').getContext('2d');
+    const myChart6 = new Chart(ctx6, {
+        type: 'line',
+        data: {
+            labels: [{% for i in time %} '{{ i }}', {% endfor %}],
+    datasets: [{
+        label: 'Mutual Fund Profit',
+        data: [{% for i in mf_profit %} {{ i }}, {% endfor %}],
+        backgroundColor: [
+            'rgba(0, 0, 255, 1)',
+        ],
+            borderColor: [
+                'rgba(0, 0, 255, 1)',
+            ],
+                borderWidth: 0.5
+        }]
+    },
+    options: {
+        y: {
+            beginAtZero: true
+        }
+    }
+});
+</script>
+{% endblock body %}

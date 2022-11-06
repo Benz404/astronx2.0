@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Success !!!!!!!
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <center>
+        <h3>{{ confirmation }}</h3>
+        <img id="success" src="{% static 'images/success.gif' %}" alt="" class="img-thumbnail">
+        <center><a href="{% url 'index'%}" class="btn btn-primary m-4">Back to Home</a></center>
+    </center>
+</div>
+{% endblock body %}

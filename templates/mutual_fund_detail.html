@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detail of {{dataline.mutual_fund_name_in_database}}{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Detail of : {{dataline.mutual_fund_name_in_database}}</h3>
+        </center>
+    </div>
+    <div class="fluid m-3">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Total Investment</td>
+                            <td>{{dataline.mutual_investment_in_database}}</td>
+                        <tr>
+                        <tr>
+                            <td>Total return</td>
+                            <td>{{dataline.mutual_fund_return_in_database}}</td>
+                        <tr>
+                        <tr>
+                            <td>overall profit</td>
+                            <td>{{dataline.mutual_fund_profit_in_database}}</td>
+                        <tr>
+                            <tr>
+                                <td>Last updated</td>
+                                <td>{{dataline.mutual_fund_created_time_in_database}}</td>
+                            <tr>
+                    </tbody>
+                </table>
+                <div class="container">
+                    <center>
+                        <a href="{% url 'mutual_fund_delete' dataline.pk %}"><button type="button" class="btn btn-danger m-3">delete the record</button></a>
+                    </center>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <img src="{% static 'images/labels/label2.gif' %}" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

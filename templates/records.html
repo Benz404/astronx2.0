@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Record of {{datetime}}
+{% endblock title %}
+{% block body %}
+<style>
+    #sign{
+        height:150px;
+        width:150px;
+    }
+</style>
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h4 class="text-light m-1 p-2">Date of the record : {{datetime}}</h4><a href="{% url 'record_history' %}"><button type="button" class="btn btn-outline-success mb-2">record the data</button></a>
+        </center>
+    </div>
+    <div class="fluid">
+        <center>
+            <h4>Stocks Report</h4>
+        </center>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">sl no.</th>
+                    <th scope="col">Stock Name</th>
+                    <th scope="col">Stock Buy Price</th>
+                    <th scope="col">Stock Current Price</th>
+                    <th scope="col">Stock Possessed</th>
+                    <th scope="col">Stock Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in stockline %}
+                <tr>
+                    <th scope="row"> {{forloop.counter}} </th>
+                    <td>{{i.stock_name_in_database}}</td>
+                    <td>{{i.stock_buy_price_in_database}}</td>
+                    <td>{{i.stock_current_price_in_database}}</td>
+                    <td>{{i.stock_amount_in_database}}</td>
+                    <td>{{i.stock_profit_in_database}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="container">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <p><b>Total investment in stocks :</b>{{st_investment}} rupees</p>
+                        <p><b>Total return in stocks :</b>{{st_return}} rupees</p>
+                        <p><b>Total profit in stocks :</b>{{st_profit}} rupees</p>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="fluid">
+        <center>
+            <h4>Mutual Fund Report</h4>
+        </center>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">sl no.</th>
+                    <th scope="col">Mutual Fund Name</th>
+                    <th scope="col">Fund Type</th>
+                    <th scope="col">Total Investment</th>
+                    <th scope="col">Current Value</th>
+                    <th scope="col">Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in fundline %}
+                <tr>
+                    <th scope="row"> {{forloop.counter}} </th>
+                    <td>{{i.mutual_fund_name_in_database}}</td>
+                    <td>{{i.mutual_fund_type_in_database}}</td>
+                    <td>{{i.mutual_investment_in_database}}</td>
+                    <td>{{i.mutual_fund_return_in_database}}</td>
+                    <td>{{i.mutual_fund_profit_in_database}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <div class="container">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <p><b>Total investment in mutual fund :</b>{{mf_investment}} rupees</p>
+                        <p><b>Total return in mutual fund :</b>{{mf_return}} rupees</p>
+                        <p><b>Total profit in mutual fund :</b>{{mf_profit}} rupees</p>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+    </div>
+    <!-- Signature footer -->
+    <div class="fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-12">
+                <center><h5><b>Overall Report on</b></h5>
+                    <h4>{{datetime}}</h4></center>
+                    <hr>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Total investment :
+                            </td>
+                            <td>
+                                {{ttin}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total Profit :
+                            </td>
+                            <td>
+                                {{ttpr}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total Net Worth :
+                            </td>
+                            <td>
+                                {{ntwr}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-3 col-sm-12"></div>
+            <div class="col-lg-3 col-sm-12"></div>
+            <div class="col-lg-3 col-sm-12">
+                <img src="{% static 'images/SIGNATURE.png' %}" alt="CEO signature" id="sign">
+                <p>Banajit Rajbongshi</p>
+                <p>CEO,AstronX Finance Company</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

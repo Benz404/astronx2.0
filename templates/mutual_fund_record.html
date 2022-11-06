@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mutual Funds Record{% endblock title %}
+{% block body %}
+<div class="container">
+  {% if messages %}
+            {% for i in messages %}
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <div>
+                    <center>{{i}}</center>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Mutual Funds Records</h3>
+        </center>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">sl. no.</th>
+            <th scope="col">Stock Name</th>
+            <th scope="col">Investment</th>
+            <th scope="col">Return</th>
+            <th scope="col">Profit</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in dataline %}
+          <tr>
+            <td scope="row">{{forloop.counter}}</td>
+            <td>{{i.mutual_fund_name_in_database}}</td>
+            <td>{{i.mutual_investment_in_database}}</td>
+            <td>{{i.mutual_fund_return_in_database}}</td>
+            <td>{{i.mutual_fund_profit_in_database}}</td>
+            <td><a href="{% url 'mutual_fund_edit' i.pk %}"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
+            <td><a href="{% url 'mutual_fund_detail' i.pk %}"><button type="button" class="btn btn-outline-info">Detail</button></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock body %}

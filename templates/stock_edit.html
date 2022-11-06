@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit registry{% endblock title %}
+{% block body %}
+<div class="container text-align-center bg-primary">
+    <marquee direction="left" scrollamount="8">
+        <p class="text-light"><b>The current market price of "{{dataline.stock_name_in_database}}" is : {{today_price}} rupees</b>
+        <p>
+    </marquee>
+</div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row justify-content-around">
+            <div class="col-lg-6 col-sm-12">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Stock Name :</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="text" class="form-control" id="floatingInput"
+                                    value="{{dataline.stock_name_in_database}}" name="stock_name"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Stock Symbol :</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="text" class="form-control" id="floatingInput"
+                                    value="{{dataline.stock_symbol_in_database}}" name="stock_symbol"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Avarage Buy Price:</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="number" step="any" class="form-control"
+                                    maxlength="10" id="floatingInput" value="{{dataline.stock_buy_price_in_database}}"
+                                    name="buy_price"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Current Price :</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="number" step="any" class="form-control"
+                                    maxlength="10" id="floatingInput" value="{{today_price}}" name="current_price"
+                                    disabled></th>
+                        </tr>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Amount of stock possessed :</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="number" class="form-control" id="floatingInput"
+                                    maxlength="10" value="{{dataline.stock_amount_in_database}}" name="stock_amount">
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <center><a href="{% url 'stocks_record'%}" class="btn btn-primary m-4">Back</a>
+                    <button type="submit" class="btn btn-success m-4">Update</button>
+                </center>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock body %}

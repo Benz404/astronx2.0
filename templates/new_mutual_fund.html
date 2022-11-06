@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add New Stock Record{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Add a New Mutual Fund Record</h3>
+        </center>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="text" id="form6Example1" class="form-control" placeholder="Fund Name" name="fund_name" maxlength="30" required/>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="form-outline">
+                    <select id="inputState" class="form-control" name="fund_type">
+                        <option disabled selected>Type of the fund</option>
+                        <option>Growth Funds</option>
+                        <option>Index Fund</option>
+                        <option>Equity Funds</option>
+                        <option>Debt Funds</option>
+                        <option>Income Funds</option>
+                        <option>Hybrid Funds</option>
+                      </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="number" id="form6Example1" class="form-control" placeholder="Investment in Fund" name="fund_investment" maxlength="20" step=".01" required/>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="number" id="form6Example2" class="form-control" placeholder="Return in fund" name="fund_return" maxlength="20" step=".01" required/>
+                </div>
+            </div>
+        </div>
+        <center><button type="submit" class="btn btn-primary btn-block m-3">Submit</button></center>
+    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add New Stock Record{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Add a New Stock Record</h3>
+        </center>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="text" id="form6Example1" class="form-control" placeholder="Stock Name" name="stock_name" maxlength="30" required/>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="text" id="form6Example2" class="form-control" placeholder="Stock Symbol" name="stock_symbol" maxlength="10" required/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="number" id="form6Example1" class="form-control" placeholder="Stock Buy Price" name="stock_buy_price" maxlength="20" step=".01" required/>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="number" id="form6Example2" class="form-control" placeholder="Stock current Price" name="stock_current_price" maxlength="20" step=".01" required/>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 p-2">
+                <div class="form-outline">
+                    <input type="number" id="form6Example1" class="form-control" placeholder="Amount of the Stock" name="stock_amount" maxlength="20" required/>
+                </div>
+            </div>
+        </div>
+        <center><button type="submit" class="btn btn-primary btn-block m-3">Submit</button></center>
+    </form>
+</div>
+{% endblock body %}

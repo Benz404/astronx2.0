@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Stocks Page
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Stocks Directory</h3>
+        </center>
+    </div>
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col-lg-6 col-sm-12 p-2">
+                <img src="{% static 'images/labels/label1.gif' %}" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="fluid">
+                    <center>
+                        <h3>Financial News</h3>
+                    </center>
+                    <marquee width="100%" direction="up" height="300px" scrollamount="3">
+                        {% for i in dataline %}
+                        <p> ♦ {{i}}</p>
+                        {% endfor %}
+                    </marquee>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Add New Stocks</h5>
+                        <p class="card-text">Here You can the record of the new stock that you bought</p>
+                        <a href="{% url 'new_stock'%}" class="btn btn-primary">Add Record</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">See old Stocks records</h5>
+                        <p class="card-text">Here You can the record of the old stock that you bought</p>
+                        <a href="{% url 'stocks_record'%}" class="btn btn-primary">See Record</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock body %}

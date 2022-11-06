@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update registry{% endblock title %}
+{% block body %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row justify-content-around">
+            <div class="col-lg-6 col-sm-12">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Mutual Fund Name :</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="text" class="form-control" id="floatingInput"
+                                    value="{{dataline.mutual_fund_name_in_database}}" name="fund_name"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Total Investment:</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="number" step=".01" class="form-control"
+                                    maxlength="10" id="floatingInput" value="{{dataline.mutual_investment_in_database}}"
+                                    name="investment"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col-lg-6 col-sm-12"><b>Current Value :</b></th>
+                            <th scope="col-lg-6 col-sm-12"><input type="number" step=".01" class="form-control"
+                                    maxlength="10" id="floatingInput" value="{{dataline.mutual_fund_return_in_database}}" name="current_value"></th>
+                        </tr>
+                    </tbody>
+                </table>
+                <center><a href="{% url 'mutual_fund_record'%}" class="btn btn-primary m-4">Back</a>
+                    <button type="submit" class="btn btn-success m-4">Update</button>
+                </center>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock body %}

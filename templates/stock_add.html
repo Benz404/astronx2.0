@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Add quantity to previous stocks
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">{{dataline.stock_name_in_database}}</h3>
+        </center>
+    </div>
+    <div class="Fluid">
+        <center>
+            <p>Last Updated : {{dataline.stock_created_time_in_database}}</p>
+        </center>
+        <div class="fluid text-center bg-secondary text-light">
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 p-2">
+                    <p>Stock Symbol : {{dataline.stock_symbol_in_database}}</p>
+                </div>
+                <div class="col-lg-3 col-sm-12 p-2">
+                    <p>Stock Buy price : {{dataline.stock_buy_price_in_database}}</p>
+                </div>
+                <div class="col-lg-3 col-sm-12 p-2">
+                    <p>Stock Current Price : {{price}}</p>
+                </div>
+                <div class="col-lg-3 col-sm-12 p-2">
+                    <p>Stock Amount in Hold : {{dataline.stock_amount_in_database}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row text-center m-3">
+                <div class="col-lg-4 col-sm-12 p-2">
+                    <div class="form-outline">
+                        <input type="number" id="form6Example1" class="form-control" placeholder="Buy Price" name="buy_price" maxlength="20" step=".01" required/>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 p-2">
+                    <div class="form-outline">
+                        <input type="number" id="form6Example1" class="form-control" placeholder="Additional Amount of the Stock" name="stock_amount" maxlength="20" required/>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 p-2">
+                    <button type="submit" class="btn btn-primary">Submit To The database</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}

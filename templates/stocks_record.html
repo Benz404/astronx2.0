@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Stocks Record{% endblock title %}
+{% block body %}
+<div class="container">
+  {% if messages %}
+            {% for i in messages %}
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <div>
+                    <center>{{i}}</center>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Stocks Records</h3>
+        </center>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">sl. no.</th>
+            <th scope="col">Stock Name</th>
+            <th scope="col">Avarage Buy price</th>
+            <th scope="col">Current Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Profit</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Add</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in dataline %}
+          <tr>
+            <td scope="row">{{forloop.counter}}</td>
+            <td>{{i.stock_name_in_database}}</td>
+            <td>{{i.stock_buy_price_in_database}}</td>
+            <td>{{i.stock_current_price_in_database}}</td>
+            <td>{{i.stock_amount_in_database}}</td>
+            <td>{{i.stock_profit_in_database}}</td>
+            <td><a href="{% url 'stock_edit' i.pk %}"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
+            <td><a href="{% url 'stock_detail' i.pk %}"><button type="button" class="btn btn-outline-info">Detail</button></a></td>
+            <td><a href="{% url 'stock_add' i.pk %}"><button type="button" class="btn btn-outline-success">Add</button></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock body %}

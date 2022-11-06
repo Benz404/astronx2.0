@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+mutual Fund Page
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="fluid bg-dark">
+        <center>
+            <h3 class="text-light m-3 p-3">Mutual Funds Directory</h3>
+        </center>
+    </div>
+<div class="container">
+    <img src="{% static 'images/labels/label3.jpg' %}" class="img-fluid" alt="Responsive image">
+    </div>
+<div class="container">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Add New Mutual Fund</h5>
+                        <p class="card-text">Here You can the record of the new mutual fund that you bought</p>
+                        <a href="{% url 'new_mutual_fund'%}" class="btn btn-primary">Add Record</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 p-2">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">See old mutual fund records</h5>
+                        <p class="card-text">Here You can the record of the old mutual fund that you bought</p>
+                        <a href="{% url 'mutual_fund_record'%}" class="btn btn-primary">See Record</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
